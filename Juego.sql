@@ -1,0 +1,46 @@
+DROP DATABASE IF EXISTS Juego;
+CREATE DATABASE Juego;
+
+USE Juego;
+
+CREATE TABLE Jugador (
+Id INTEGER PRIMARY KEY NOT NULL,
+Nombre VARCHAR(100) NOT NULL,
+Contraseña VARCHAR(100) NOT NULL	
+)ENGINE = InnoDB;
+
+CREATE TABLE Partida (
+Id INTEGER PRIMARY KEY NOT NULL,
+Fecha VARCHAR(100) NOT NULL
+)ENGINE = InnoDB;
+
+CREATE TABLE Participacion (
+Id_J INTEGER NOT NULL,
+Id_P INTEGER NOT NULL,
+Posicion INTEGER NOT NULL,
+FOREIGN KEY (Id_J) REFERENCES Jugador(Id),
+FOREIGN KEY (Id_P) REFERENCES Partida(Id)
+)ENGINE = InnoDB;
+
+INSERT INTO Jugador VALUES(1,'Juan','contraseña');
+INSERT INTO Jugador VALUES(2,'Maria','contraseña');
+INSERT INTO Jugador VALUES(3,'Pedro','contraseña');
+INSERT INTO Jugador VALUES(4,'Luis','contraseña');
+INSERT INTO Jugador VALUES(5,'Julia','contraseña');
+
+INSERT INTO Partida VALUES(1,'2021/6/13');
+INSERT INTO Partida VALUES(2,'2021/9/27');
+INSERT INTO Partida VALUES(3,'2021/5/16');
+
+INSERT INTO Participacion VALUES(1,1,2);
+INSERT INTO Participacion VALUES(1,2,2);
+INSERT INTO Participacion VALUES(1,3,3);
+INSERT INTO Participacion VALUES(2,2,1);
+INSERT INTO Participacion VALUES(2,3,1);
+INSERT INTO Participacion VALUES(3,1,3);
+INSERT INTO Participacion VALUES(4,1,4);
+INSERT INTO Participacion VALUES(4,2,4);
+INSERT INTO Participacion VALUES(4,3,1);
+INSERT INTO Participacion VALUES(5,1,3);
+INSERT INTO Participacion VALUES(5,2,3);
+
